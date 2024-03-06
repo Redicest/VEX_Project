@@ -25,7 +25,7 @@ void autonomous() {
     planner.addWayPoint(0, 0, 0);
     planner.addWayPoint(100, 100, 0);
     // planner.addWayPoint(0, 0, 0);
-    Traj traj = planner.generateBezierTraj(100,true);
+    Traj traj = planner.generateBezierTraj(200,true);
     trajMove(traj, 20, fwd);
     Chassis::getInstance()->chassisBrake(brake);
 

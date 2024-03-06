@@ -26,7 +26,7 @@ void trajMove(Traj traj, double _power, directionType direction) {
         Point gp = traj.getGoalPoint(pos._x, pos._y);
         double dir = IMUHeading();
         // report
-        cout << "(" << pos._x << "," << pos._y << ") -> (" << gp._x << "," << gp._y << ")" << endl;
+        cout << pos._x << "," << pos._y << "," << gp._x << "," << gp._y << endl;
         if (direction == directionType::rev) {
             dir += 180;
         }
@@ -60,6 +60,12 @@ void trajMove(Traj traj, double _power, directionType direction) {
             double temp = vL;
             vL = -vR;
             vR = -temp;
+        }
+        if(tDir<-10){
+          vR+=10;
+        }
+        if(tDir>10){
+          vL+=10;
         }
         double maxV = max(abs(vL), abs(vR));
         vL = vL / maxV * _power;
